@@ -1,33 +1,44 @@
-let lista = document.getElementById('lista-produtos');
+let lista = document.getElementById('lista-produtos').innerHTML = '';
+document.getElementById('valor-total').textContent = 'R$ 0';
+let valorTotal = 0;
 
 
 
 
 
-function adicionar(){
+function adicionar() {
 
+    //recupera quantidade e produto
     let produto = document.getElementById("produto").value;
     let quantidade = document.getElementById("quantidade").value;
-    let novoProduto = document.createElement('span');
-    let partes = produto.split(' - ');
-    let nome = partes[0];
-    let valor = partes[1];
-    let total = quantidade * valor;
-    let textoTotal = document.getElementById('valor-total');
 
-    lista.classList.add('carrinho__produtos__produto');
-    novoProduto.classList.add('carrinho__produtos');
-    
-    textoTotal.innerHTML = valor;
-    
-    
-    
+    //separa o valor do produto do nome
 
-    novoProduto.innerHTML = (`${quantidade}X ${nome} ${valor}`);
-    lista.appendChild(novoProduto);
+    let nome = produto.split('-')[0];
+    let valor = produto.split('R$')[1];
 
-    
-    
+    // calcula sub total dos valores dos produtos escolhidos
+
+    let subTotal = quantidade * valor;
+
+    console.log(subTotal);
+
+    // adiciona o produto ao carrinho
+
+    lista.innerHTML = lista.innerHTML + `<section class="carrinho__produtos" id="lista-produtos">
+        <section class="carrinho__produtos__produto">
+          <span class="texto-azul">${quantidade}x </span>${nome}<span class="texto-azul">R$${valor}</span>
+        </section>
+      </section>`;
+
+
+    // calcula o valor total dos produtos adicionados no carrinho
+
+    valorTotal = valorTotal + subTotal;
+    let valorTotalGeral = document.getElementById('valor-total');
+    valorTotalGeral.textContent = `R$ ${valorTotal}`;
+
+
 }
 
 
@@ -38,5 +49,8 @@ function adicionar(){
 function limpar() {
 
     lista.innerHTML = "";
-    
+    valorTotal = 0;
+    let textoTotal = document.getElementById('texto-total');
+    textoTotal.textContent = "R$ 0";
+
 }
