@@ -1,4 +1,4 @@
-let lista = document.getElementById('lista-produtos').innerHTML = '';
+document.getElementById('lista-produtos').innerHTML = '';
 document.getElementById('valor-total').textContent = 'R$ 0';
 let valorTotal = 0;
 
@@ -7,6 +7,9 @@ let valorTotal = 0;
 
 
 function adicionar() {
+
+    let lista = document.getElementById('lista-produtos');
+
 
     //recupera quantidade e produto
     let produto = document.getElementById("produto").value;
@@ -42,15 +45,10 @@ function adicionar() {
 }
 
 
-
-
-
-
 function limpar() {
 
-    lista.innerHTML = "";
-    valorTotal = 0;
-    let textoTotal = document.getElementById('texto-total');
-    textoTotal.textContent = "R$ 0";
+    document.getElementById('valor-total').innerHTML = 'R$ 0';
+    document.getElementById('lista-produtos').innerHTML = '';
+    document.getElementById('quantidade').value = '';
 
 }
