@@ -40,7 +40,7 @@ function adicionar() {
     valorTotal = valorTotal + subTotal;
     let valorTotalGeral = document.getElementById('valor-total');
     valorTotalGeral.textContent = `R$ ${valorTotal}`;
-
+    quantidade = document.getElementById("quantidade").value = 0;
 
 }
 
